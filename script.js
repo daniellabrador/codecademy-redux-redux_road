@@ -1,3 +1,4 @@
+// Set up initial state and reducer --------------------------------------------
 const initialWagonState = {
   supplies: 100,
   distance: 0,
@@ -13,6 +14,7 @@ const wagonStateReducer = (state = initialWagonState, action) => {
         days: state.days + 1
       }
     case 'travel':
+      if (state.supplies < 20 * action.payload) return state;
       return {
         ...state,
         supplies: state.supplies - (20 * action.payload),
@@ -22,7 +24,7 @@ const wagonStateReducer = (state = initialWagonState, action) => {
     case 'tippedWagon':
       return {
         ...state,
-        supplies: state.supplies - (30 * action.payload),
+        supplies: state.supplies - 30,
         days: state.days + 1
       }
     default:
