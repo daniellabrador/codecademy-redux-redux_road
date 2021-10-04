@@ -31,3 +31,19 @@ const wagonStateReducer = (state = initialWagonState, action) => {
       return state;
   }
 }
+
+
+
+// Play ------------------------------------------------------------------------
+let wagon = wagonStateReducer(undefined, {});
+console.log(wagon)
+wagon = wagonStateReducer(wagon, {type: 'travel', payload: 1})
+console.log(wagon)
+wagon = wagonStateReducer(wagon, {type: 'gather'})
+console.log(wagon)
+wagon = wagonStateReducer(wagon, {type: 'tippedWagon'})
+console.log(wagon)
+wagon = wagonStateReducer(wagon, {type: 'travel', payload: 3})
+console.log(wagon)
+wagon = wagonStateReducer(wagon, {type: 'travel', payload: 3})
+console.log(wagon)
