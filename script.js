@@ -1,5 +1,6 @@
 // Set up initial state and reducer --------------------------------------------
 const initialWagonState = {
+  cash: 200,
   supplies: 100,
   distance: 0,
   days: 0
@@ -26,6 +27,23 @@ const wagonStateReducer = (state = initialWagonState, action) => {
         ...state,
         supplies: state.supplies - 30,
         days: state.days + 1
+      }
+    case 'sell':
+      return {
+        ...state,
+        supplies: state.supplies - (20 * action.payload),
+        cash: state.cash + (5 * action.payload),
+      }
+    case 'buy':
+      return {
+        ...state,
+        supplies: state.supplies + (25 * action.payload),
+        cash: state.cash + (15 * action.payload),
+      }
+    case 'theft':
+      return {
+        ...state,
+        cash: state.cash / 2
       }
     default:
       return state;
